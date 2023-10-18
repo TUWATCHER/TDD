@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Darwin-clang++"
+	BuildStamp="20231017-1204-Experimental"
+	Name="TOYBOX01.local"
+	Generator="ctest-3.27.0"
+	CompilerName="/usr/bin/clang++"
+	CompilerVersion="14.0.0.14000029"
+	OSName="macOS"
+	Hostname="TOYBOX01.local"
+	OSRelease="12.6.2"
+	OSVersion="21G320"
+	OSPlatform="x86_64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="70"
+	ProcessorCacheSize="32768"
+	NumberOfLogicalCPU="8"
+	NumberOfPhysicalCPU="4"
+	TotalVirtualMemory="4096"
+	TotalPhysicalMemory="16384"
+	LogicalProcessorsPerPhysical="8"
+	ProcessorClockFrequency="2200"
+	>
+	<Testing>
+		<StartDateTime>Oct 17 15:27 MSK</StartDateTime>
+		<StartTestTime>1697545653</StartTestTime>
+		<TestList/>
+		<EndDateTime>Oct 17 15:27 MSK</EndDateTime>
+		<EndTestTime>1697545653</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
