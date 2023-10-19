@@ -1,11 +1,16 @@
 #include <iostream>
 #include <string>
+#include <array>
 
 #include "googletest/googletest/include/gtest/gtest.h"
 #include "googletest/googlemock/include/gmock/gmock.h"
 
 std::string ConvertArabic(unsigned int number);
-
+struct ArabicToRomanMap
+{
+    unsigned int arabicNumber;
+    std::string romanNumber;
+};
 class RomanNumeralAssert
 {
     public:
@@ -37,22 +42,32 @@ int main(int argc, char **argv)
 
 std::string ConvertArabic(unsigned int number)
 {
+    const std::size_t numberofMappings = 13;
+    using mapping = std::array<ArabicToRomanMap, numberofMappings>;
+    const mapping ArabicRomanMap =
+    {{
+        {1000, "M"},
+        {900, "CM"},
+        {500, "D"},
+        {400, "CD"},
+        {100, "C"},
+        {90, "XC"},
+        {50, "L"},
+        {40, "XL"},
+        {10, "X"},
+        {9, "IX"},
+        {5, "V"},
+        {4, "IV"},
+        {1, "I"}
+    }};
     std::string romanNumeral;
-    while(number >= 100)
+    for (const auto& mapp : ArabicRomanMap)
     {
-        romanNumeral += "C";
-        number -= 100;
-    }
-    while(number >= 10)
-    {
-        romanNumeral += "X";
-        number -= 10;
-    }
-    
-    while(number >= 1)
-    {
-        romanNumeral += "I";
-        number--;
+        while (number >= mapp.arabicNumber)
+        {
+            romanNumeral += mapp.romanNumber;
+            number -= mapp.arabicNumber;
+        }
     }
     
     return romanNumeral;
@@ -70,4 +85,14 @@ TEST(ArabicToNumeral, ConversionTestCases)
     assertThat(100).isConvertedToRomanNumeral("C");
     assertThat(200).isConvertedToRomanNumeral("CC");
     assertThat(300).isConvertedToRomanNumeral("CCC");
+    assertThat(500).isConvertedToRomanNumeral("D");
+    assertThat(1000).isConvertedToRomanNumeral("M");
+    assertThat(2000).isConvertedToRomanNumeral("MM");
+    assertThat(3000).isConvertedToRomanNumeral("MMM");
+    assertThat(3333).isConvertedToRomanNumeral("MMMCCCXXXIII");
+    assertThat(3999).isConvertedToRomanNumeral("MMMCMXCIX");
+    assertThat(5).isConvertedToRomanNumeral("V");
+    assertThat(6).isConvertedToRomanNumeral("VI");
+    assertThat(4).isConvertedToRomanNumeral("IV");
+
 }
